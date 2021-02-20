@@ -1,6 +1,7 @@
 import Logo from "../Unprotected/Logo";
 import {
   Avatar,
+  Box,
   Button,
   Flex,
   Icon,
@@ -9,6 +10,7 @@ import {
   MenuItem,
   MenuList,
   Spacer,
+  Text,
 } from "@chakra-ui/react";
 import ThemeSwitcher from "../ThemeSwitcher";
 import { HiLogin, HiLogout, HiUser } from "react-icons/hi";
@@ -22,14 +24,14 @@ export default function Navbar() {
     if (user) {
       return (
         <>
-          <MenuItem>
-            <Link href="/profile">
+          <Link href="/profile">
+            <MenuItem>
               <div>
                 <Icon as={HiUser} />
                 Profile
               </div>
-            </Link>
-          </MenuItem>
+            </MenuItem>
+          </Link>
           <Link href="/api/auth/logout">
             <MenuItem>
               <div>
@@ -57,7 +59,10 @@ export default function Navbar() {
     if (user) {
       return (
         <MenuButton>
-          <Avatar name={user.name} src={user.picture} />
+          <Flex align="center" boxShadow="lg" p={2} borderRadius="lg">
+            <Text>{user.name}</Text>&nbsp;
+            <Avatar src={user.picture} />
+          </Flex>
         </MenuButton>
       );
     } else {
@@ -69,11 +74,11 @@ export default function Navbar() {
     }
   };
   return (
-    <Flex m={2} align="center">
+    <Flex m={0.5} align="center">
       <Logo />
       <Spacer />
       <div>
-        <Menu mt={4}>
+        <Menu>
           <MenuButtons />
           <MenuList>
             <MenuItem>
