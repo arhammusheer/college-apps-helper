@@ -1,10 +1,15 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/layout";
 import Navbar from "../../components/Protected/Navbar";
-import NoSSR from "react-no-ssr";
-import { useState } from "react";
 import { Button } from "@chakra-ui/button";
+import { useUser } from "@auth0/nextjs-auth0";
+import Router from "next/router";
+import Error from "next/error";
 
 export default function SAT() {
+  const { user, error, isLoading } = useUser();
+  if (!user) {
+    return <Error statusCode={403}/>;
+  }
   return (
     <>
       <Navbar />
