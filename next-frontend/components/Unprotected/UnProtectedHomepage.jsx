@@ -1,7 +1,14 @@
 import Icon from "@chakra-ui/icon";
-import { Box, Center, Heading, SimpleGrid, Text } from "@chakra-ui/layout";
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/layout";
 import { HiLibrary } from "react-icons/hi";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import Navbar from "../Protected/Navbar";
 
@@ -12,11 +19,14 @@ export default function UnProtectedHomepage() {
       <Center height="80vh" px={5}>
         <SimpleGrid columns={[1, 1, 2, 2]}>
           <Box mt={["40vh", "30vh", 0]}>
-            <Icon as={HiLibrary} w={50} h={50} />
-            <Heading fontSize="6xl">CollgR</Heading>
+            <Flex align="center">
+              <Icon as={HiLibrary} w={50} h={50} />
+              <Heading fontSize="6xl">CollgR</Heading>{" "}
+            </Flex>
+
             <Text fontSize="3xl">Plan, prepare and Progress, Start here.</Text>
           </Box>
-          <Box boxShadow="xl" p="3" borderRadius="xl" mt={[40,0]}>
+          <Box boxShadow="xl" p="3" borderRadius="xl" mt={[40, 0]}>
             <Heading bold>
               Your one stop for all your college applications
             </Heading>

@@ -74,7 +74,7 @@ export default function Navbar() {
     }
   };
   return (
-    <Flex m={0.5} align="center">
+    <Flex mt={0.5} align="center">
       <Logo />
       <Spacer />
       <div>

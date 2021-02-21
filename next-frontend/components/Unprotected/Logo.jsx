@@ -1,5 +1,5 @@
 import Icon from "@chakra-ui/icon";
-import { Center, Heading } from "@chakra-ui/layout";
+import { Center, Flex, Heading } from "@chakra-ui/layout";
 import Link from "next/link";
 import { HiLibrary } from "react-icons/hi";
 export default function Logo() {
@@ -7,10 +7,12 @@ export default function Logo() {
     <Center>
       <div style={{ cursor: "pointer" }}>
         <Link href="/">
-          <Heading fontSize="4xl" mb={0} p={0}>
-            <Icon as={HiLibrary} />
-            CollgR
-          </Heading>
+          <Flex align="end" mx={2}>
+            <Heading fontSize="4xl" mb={0} p={0}>
+              <Icon as={HiLibrary} />
+              CollgR
+            </Heading>
+          </Flex>
         </Link>
       </div>
     </Center>
