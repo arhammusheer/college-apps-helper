@@ -21,7 +21,6 @@ import {
   MenuItem,
   MenuDivider,
   useColorMode,
-  Tag,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -32,7 +31,6 @@ import {
 import Logo from "../Unprotected/Logo";
 import { useUser } from "@auth0/nextjs-auth0";
 import { HiLogout, HiMoon, HiSun, HiUser } from "react-icons/hi";
-import ThemeSwitcher from "../ThemeSwitcher";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -151,8 +149,8 @@ const DesktopNav = () => {
                 color={useColorModeValue("gray.500", "gray.200")}
                 _hover={{
                   textDecoration: "none",
-                  backgroundColor:"gray.50",
-                  borderRadius:"full",
+                  borderRadius: "full",
+                  border:"1px solid teal",
                   color: useColorModeValue("gray.800", "white"),
                 }}
               >
