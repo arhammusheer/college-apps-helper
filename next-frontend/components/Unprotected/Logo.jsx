@@ -8,7 +8,7 @@ export default function Logo() {
       <div style={{ cursor: "pointer" }}>
         <Link href="/">
           <Flex align="end" mx={2}>
-            <Heading fontSize="4xl" mb={0} p={0}>
+            <Heading fontSize="xl" mb={0} p={0}>
               <Icon as={HiLibrary} />
               CollgR
             </Heading>

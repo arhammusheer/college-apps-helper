@@ -5,18 +5,25 @@ import {
   Flex,
   Heading,
   SimpleGrid,
+  Spacer,
   Text,
 } from "@chakra-ui/layout";
 import { HiLibrary } from "react-icons/hi";
 import { Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
-import Navbar from "../Protected/Navbar";
+import { motion } from "framer-motion";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 export default function UnProtectedHomepage() {
   return (
     <>
-      <Navbar />
-      <Center height="80vh" px={5}>
+      <Flex justifyContent="end">
+        <Spacer />
+        <Button m={1} size="xs" variant="ghost">
+          <ThemeSwitcher />
+        </Button>
+      </Flex>
+      <Center height="90vh" px={5}>
         <SimpleGrid columns={[1, 1, 2, 2]}>
           <Box mt={["40vh", "30vh", 0]}>
             <Flex align="center">
@@ -26,7 +33,7 @@ export default function UnProtectedHomepage() {
 
             <Text fontSize="3xl">Plan, prepare and Progress, Start here.</Text>
           </Box>
-          <Box boxShadow="xl" p="3" borderRadius="xl" mt={[40, 0]}>
+          <Box boxShadow="xl" p="3" borderRadius="xl" mt={[40, 0]} mb={5}>
             <Heading bold>
               Your one stop for all your college applications
             </Heading>
@@ -40,14 +47,14 @@ export default function UnProtectedHomepage() {
             </Text>
             <Text mt={5}>Fulfill your dreams.</Text>
             <Link href="/api/auth/login">
-              <Button
-                mt={4}
-                colorScheme="teal"
-                size="lg"
-                w={["100%", "75%", "50%"]}
+              <motion.div
+                whileHover={{ scaleX: 0.99 }}
+                whileTap={{ scale: 0.97 }}
               >
-                Get Started Today
-              </Button>
+                <Button mt={4} colorScheme="teal" size="lg" w="100%">
+                  Get Started Today
+                </Button>
+              </motion.div>
             </Link>
           </Box>
         </SimpleGrid>
