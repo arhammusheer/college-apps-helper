@@ -2,13 +2,12 @@ import { Box, SimpleGrid, Text } from "@chakra-ui/layout";
 import Navbar from "../../components/Protected/Navbar";
 import { Button } from "@chakra-ui/button";
 import { useUser } from "@auth0/nextjs-auth0";
-import Router from "next/router";
 import Error from "next/error";
+import LoadingPage from "../../components/Unprotected/LoadingPage";
 
 export default function SAT() {
   const { user, error, isLoading } = useUser();
-  if (isLoading) {
-  }
+  if (isLoading) return <LoadingPage />;
   if (user) {
     return (
       <>
