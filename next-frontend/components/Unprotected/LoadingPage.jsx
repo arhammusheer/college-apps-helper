@@ -1,5 +1,4 @@
 import { Center } from "@chakra-ui/layout";
-import { Spinner } from "@chakra-ui/spinner";
 import loader from "../../styles/loader.module.css";
 export default function LoadingPage() {
   return (

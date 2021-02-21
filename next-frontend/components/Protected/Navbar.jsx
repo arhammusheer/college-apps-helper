@@ -59,7 +59,7 @@ export default function Navbar() {
     if (user) {
       return (
         <MenuButton>
-          <Flex align="center" boxShadow="lg" p={2} borderRadius="lg">
+          <Flex align="center" boxShadow="lg" p={2} m={2} borderRadius="lg" border="1px">
             <Text>{user.name}</Text>&nbsp;
             <Avatar src={user.picture} />
           </Flex>
@@ -67,7 +67,7 @@ export default function Navbar() {
       );
     } else {
       return (
-        <MenuButton as={Button}>
+        <MenuButton as={Button} p={2} m={2}>
           <Icon as={FaBars} />
         </MenuButton>
       );

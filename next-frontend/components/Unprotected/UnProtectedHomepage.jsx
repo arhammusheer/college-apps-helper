@@ -1,12 +1,5 @@
 import Icon from "@chakra-ui/icon";
-import {
-  Box,
-  Center,
-  Container,
-  Text,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/layout";
+import { Box, Center, Heading, SimpleGrid, Text } from "@chakra-ui/layout";
 import { HiLibrary } from "react-icons/hi";
 import { Button } from "@chakra-ui/react";
 import Link from "next/link";
@@ -16,41 +9,38 @@ export default function UnProtectedHomepage() {
   return (
     <>
       <Navbar />
-      <Container>
-        <Wrap>
-          <WrapItem>
-            <Text fontSize="2xl">Plan, prepare and Progress, Start here.</Text>
-          </WrapItem>
-          <WrapItem>
-            <Box borderRadius="md" mt={10}>
-              <Text>
-                Find official practice papers for SAT, ACT and IELTS for free
-                right at one place.
-              </Text>
-              <Text mt={5}>
-                Manage your college application, write your essays, store your
-                documents and manage transcripts
-              </Text>
-            </Box>
-          </WrapItem>
-        </Wrap>
-      </Container>
-
-      <Center>
-        <div>
-          <Box
-            mt={10}
-            boxShadow="xl"
-            
-            p="3"
-            borderRadius="xl"
-          >
-            <Text fontSize="xl">Fulfill your dreams.</Text>
+      <Center height="80vh" px={5}>
+        <SimpleGrid columns={[1, 1, 2, 2]}>
+          <Box mt={["40vh", "30vh", 0]}>
+            <Icon as={HiLibrary} w={50} h={50} />
+            <Heading fontSize="6xl">CollgR</Heading>
+            <Text fontSize="3xl">Plan, prepare and Progress, Start here.</Text>
+          </Box>
+          <Box boxShadow="xl" p="3" borderRadius="xl" mt={[40,0]}>
+            <Heading bold>
+              Your one stop for all your college applications
+            </Heading>
+            <Text mt={5}>
+              Find official practice papers for SAT, ACT and IELTS for free
+              right at one place.
+            </Text>
+            <Text mt={5}>
+              Manage your college application, write your essays, store your
+              documents and manage transcripts
+            </Text>
+            <Text mt={5}>Fulfill your dreams.</Text>
             <Link href="/api/auth/login">
-              <Button my={4} colorScheme="purple">Get Started Today</Button>
+              <Button
+                mt={4}
+                colorScheme="teal"
+                size="lg"
+                w={["100%", "75%", "50%"]}
+              >
+                Get Started Today
+              </Button>
             </Link>
           </Box>
-        </div>
+        </SimpleGrid>
       </Center>
     </>
   );
