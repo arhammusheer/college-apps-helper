@@ -20,6 +20,7 @@ export default function Home() {
     <div>
       <Head>
         <title>CollgR</title>
+        <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

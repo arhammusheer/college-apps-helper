@@ -118,7 +118,10 @@ export default function WithSubnavigation() {
                   {colorMode === "light" ? "Dark" : "Light"} Theme
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem icon={<HiLogout />} onClick={signOut}>
+                <MenuItem
+                  icon={<HiLogout />}
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                >
                   Logout
                 </MenuItem>
               </MenuList>
