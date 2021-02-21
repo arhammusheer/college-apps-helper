@@ -21,6 +21,7 @@ import {
   MenuItem,
   MenuDivider,
   useColorMode,
+  Tag,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -145,12 +146,13 @@ const DesktopNav = () => {
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
-                as={"button"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={useColorModeValue("gray.500", "gray.200")}
                 _hover={{
                   textDecoration: "none",
+                  backgroundColor:"gray.50",
+                  borderRadius:"full",
                   color: useColorModeValue("gray.800", "white"),
                 }}
               >
