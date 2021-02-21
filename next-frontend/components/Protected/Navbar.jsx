@@ -71,7 +71,9 @@ export default function WithSubnavigation() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <Logo />
+            <Flex align="center" h="100%">
+              <Logo />
+            </Flex>
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -143,9 +145,10 @@ const DesktopNav = () => {
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
+                as={"button"}
                 fontSize={"sm"}
                 fontWeight={500}
-                color={useColorModeValue("gray.600", "gray.200")}
+                color={useColorModeValue("gray.500", "gray.200")}
                 _hover={{
                   textDecoration: "none",
                   color: useColorModeValue("gray.800", "white"),
@@ -186,7 +189,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      _hover={{ bg: useColorModeValue("blue.50", "gray.900") }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
@@ -284,6 +287,10 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
+    label: "Home",
+    href: "/",
+  },
+  {
     label: "Test Practice",
     children: [
       {
@@ -298,7 +305,8 @@ const NAV_ITEMS = [
       },
       {
         label: "IELTS",
-        subLabel: "Work on your IELTS score and improve all aspects of your english.",
+        subLabel:
+          "Work on your IELTS score and improve all aspects of your english.",
         href: "#",
       },
     ],

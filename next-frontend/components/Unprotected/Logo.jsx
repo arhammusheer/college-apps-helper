@@ -4,17 +4,13 @@ import Link from "next/link";
 import { HiLibrary } from "react-icons/hi";
 export default function Logo() {
   return (
-    <Center>
-      <div style={{ cursor: "pointer" }}>
-        <Link href="/">
-          <Flex align="end" mx={2}>
-            <Heading fontSize="xl" mb={0} p={0}>
-              <Icon as={HiLibrary} />
-              CollgR
-            </Heading>
-          </Flex>
-        </Link>
-      </div>
-    </Center>
+    <Link href="/">
+      <Flex align="center">
+        <Heading fontSize="xl" mb={0} p={0}>
+          <Icon as={HiLibrary} />
+          CollgR
+        </Heading>
+      </Flex>
+    </Link>
   );
 }
