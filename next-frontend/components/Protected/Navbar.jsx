@@ -29,13 +29,13 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import Logo from "../Unprotected/Logo";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useSession, signOut } from "next-auth/client";
 import { HiLogout, HiMoon, HiSun, HiUser } from "react-icons/hi";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const { user } = useUser();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [session, loading] = useSession();
 
   return (
     <Box>
@@ -101,10 +101,10 @@ export default function WithSubnavigation() {
                     style={{ whiteSpace: "nowrap" }}
                     size={"sm"}
                   >
-                    {user.name}
+                    {session.user.name}
                   </Text>
                   &nbsp;
-                  <Avatar src={user.picture} size={"sm"} />
+                  <Avatar src={session.user.image} size={"sm"} />
                 </Flex>
               </MenuButton>
               <MenuList>
@@ -118,9 +118,9 @@ export default function WithSubnavigation() {
                   {colorMode === "light" ? "Dark" : "Light"} Theme
                 </MenuItem>
                 <MenuDivider />
-                <Link href="api/auth/logout">
-                  <MenuItem icon={<HiLogout />}>Logout</MenuItem>
-                </Link>
+                <MenuItem icon={<HiLogout />} onClick={signOut}>
+                  Logout
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -150,7 +150,7 @@ const DesktopNav = () => {
                 _hover={{
                   textDecoration: "none",
                   borderRadius: "full",
-                  border:"1px solid teal",
+                  border: "1px solid teal",
                   color: useColorModeValue("gray.800", "white"),
                 }}
               >
@@ -332,6 +332,6 @@ const NAV_ITEMS = [
   },
   {
     label: "My Essays",
-    href: "#",
+    href: "/essays",
   },
 ];

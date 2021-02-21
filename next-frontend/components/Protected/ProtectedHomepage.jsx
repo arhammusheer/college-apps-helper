@@ -1,4 +1,4 @@
-import { Container, Wrap, WrapItem } from "@chakra-ui/layout";
+import { Wrap } from "@chakra-ui/layout";
 import Navbar from "./Navbar";
 import PracticePapers from "./PracticePapers";
 

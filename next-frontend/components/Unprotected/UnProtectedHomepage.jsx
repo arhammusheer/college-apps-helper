@@ -46,7 +46,7 @@ export default function UnProtectedHomepage() {
               documents and manage transcripts
             </Text>
             <Text mt={5}>Fulfill your dreams.</Text>
-            <Link href="/api/auth/login">
+            <Link href="/api/auth/signin">
               <motion.div
                 whileHover={{ scaleX: 0.99 }}
                 whileTap={{ scale: 0.97 }}

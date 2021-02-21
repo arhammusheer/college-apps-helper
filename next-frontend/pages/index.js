@@ -1,25 +1,25 @@
-import { useUser } from "@auth0/nextjs-auth0";
+import { useSession } from "next-auth/client";
 import Head from "next/head";
+import UnProtectedHomepage from "../components/Unprotected/UnProtectedHomepage";
 import ProtectedHomepage from "../components/Protected/ProtectedHomepage";
 import LoadingPage from "../components/Unprotected/LoadingPage";
-import UnProtectedHomepage from "../components/Unprotected/UnProtectedHomepage";
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
+  const [session, loading] = useSession();
+
   const AuthFilter = () => {
-    if (isLoading) {
+    if (loading) {
       return <LoadingPage />;
     }
-    if (user) {
+    if (session) {
       return <ProtectedHomepage />;
     }
-    if (error) return <div>{error}</div>;
     return <UnProtectedHomepage />;
   };
   return (
     <div>
       <Head>
-        <title>Collgr</title>
+        <title>CollgR</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
