@@ -16,5 +16,4 @@ export default NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   session: { jwt: true, maxAge: 24 * 60 * 60 },
   jwt: { secret: process.env.JWT_SECRET, encryption: false },
-  debug: true,
 });

@@ -3,6 +3,7 @@ import Head from "next/head";
 import UnProtectedHomepage from "../components/Unprotected/UnProtectedHomepage";
 import ProtectedHomepage from "../components/Protected/ProtectedHomepage";
 import LoadingPage from "../components/Unprotected/LoadingPage";
+import Navbar from "../components/Protected/Navbar";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -12,7 +13,12 @@ export default function Home() {
       return <LoadingPage />;
     }
     if (session) {
-      return <ProtectedHomepage />;
+      return (
+        <div>
+          <Navbar />
+          <ProtectedHomepage />
+        </div>
+      );
     }
     return <UnProtectedHomepage />;
   };
