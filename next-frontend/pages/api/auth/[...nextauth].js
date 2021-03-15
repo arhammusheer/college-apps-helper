@@ -8,6 +8,10 @@ export default NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    Providers.Discord({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+    }),
     // ...add more providers here
   ],
 
@@ -15,5 +19,12 @@ export default NextAuth({
   database: process.env.MONGODB_URL,
   secret: process.env.NEXTAUTH_SECRET,
   session: { jwt: true, maxAge: 24 * 60 * 60 },
-  jwt: { secret: process.env.JWT_SECRET, encryption: false },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    encryption: true,
+  },
+  pages: {
+    signIn: "/auth/signin",
+    newUser: "/welcome",
+  },
 });

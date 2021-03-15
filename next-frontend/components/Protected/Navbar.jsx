@@ -104,7 +104,11 @@ export default function WithSubnavigation() {
                     {session.user.name}
                   </Text>
                   &nbsp;
-                  <Avatar src={session.user.image} size={"sm"} />
+                  <Avatar
+                    src={session.user.image}
+                    size={"sm"}
+                    bg={"transparent"}
+                  />
                 </Flex>
               </MenuButton>
               <MenuList>
