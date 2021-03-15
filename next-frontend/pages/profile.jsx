@@ -1,25 +1,14 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Button } from "@chakra-ui/button";
-import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { Image } from "@chakra-ui/image";
-import { Input } from "@chakra-ui/input";
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/layout";
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-} from "@chakra-ui/modal";
 import { Tooltip } from "@chakra-ui/tooltip";
-import { signIn, useSession } from "next-auth/client";
+import { getSession, signIn, useSession } from "next-auth/client";
 import { useState } from "react";
 import Navbar from "../components/Protected/Navbar";
 import LoadingPage from "../components/Unprotected/LoadingPage";
 import ReactFileReader from "react-file-reader";
+import { Editable, EditableInput, EditablePreview } from "@chakra-ui/editable";
+import { useToast } from "@chakra-ui/toast";
 
 export default function Profile() {
   const [session, loading] = useSession();
@@ -27,14 +16,50 @@ export default function Profile() {
     const [userName, setUserName] = useState(session.user.name);
     const [userEmail, setUserEmail] = useState(session.user.email);
     const [userImage, setUserImage] = useState(session.user.image);
+    const toast = useToast();
 
     const handleImage = (image) => {
       setUserImage(image.base64);
     };
-    const resetProfile = () => {
-      setUserName(session.user.name);
-      setUserEmail(session.user.email);
+    const resetImage = () => {
       setUserImage(session.user.image);
+    };
+    const submitUserName = async (username) => {
+      if (username !== session.user.name)
+        await fetch("/api/profile/username", {
+          method: "POST",
+          body: JSON.stringify({ username: username }),
+        }).then((response) => {
+          if (response.status === 200) {
+            toast({
+              title: "Username Updated",
+              description: "Your username has successfully been updated",
+              status: "success",
+              duration: 800,
+              isClosable: true,
+              position: "bottom-right",
+            });
+            toast({
+              title: "Re-Login required",
+              description:
+                "To reflect your profile changes, you may need to login again.",
+              status: "warning",
+              duration: 5000,
+              isClosable: true,
+              position: "bottom-right",
+            });
+            getSession();
+          } else {
+            toast({
+              title: "Could not update username",
+              description: "An error occured",
+              status: "error",
+              duration: 800,
+              isClosable: true,
+              position: "bottom-right",
+            });
+          }
+        });
     };
 
     return (
@@ -60,8 +85,26 @@ export default function Profile() {
               </ReactFileReader>
 
               <Box ml={3}>
-                <Heading>{userName}</Heading>
-                <Text>{userEmail}</Text>
+                <Heading>
+                  <Editable defaultValue={userName} onSubmit={submitUserName}>
+                    <EditablePreview />
+                    <EditableInput />
+                  </Editable>
+                </Heading>
+                <Text
+                  onClick={() => {
+                    toast({
+                      title: "Email is not editable",
+                      description: "Sorry, you cannot edit your email",
+                      status: "warning",
+                      duration: 800,
+                      isClosable: true,
+                      position: "bottom-right",
+                    });
+                  }}
+                >
+                  {userEmail}
+                </Text>
               </Box>
             </Center>
             <Flex
@@ -77,7 +120,7 @@ export default function Profile() {
                 variant="ghost"
                 size="sm"
                 m={1}
-                onClick={resetProfile}
+                onClick={resetImage}
               >
                 Cancel
               </Button>
