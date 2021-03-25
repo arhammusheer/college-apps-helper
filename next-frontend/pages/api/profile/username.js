@@ -5,7 +5,6 @@ export default async (req, res) => {
   const session = await getSession({ req });
   if (req.method === "POST") {
     if (session) {
-      console.log(JSON.parse(req.body));
       await updateUsernameInDB(
         session.user.email,
         JSON.parse(req.body).username

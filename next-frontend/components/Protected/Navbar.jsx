@@ -308,13 +308,13 @@ const NAV_ITEMS = [
       {
         label: "ACT",
         subLabel: "Official sample ACT papers and guides.",
-        href: "#",
+        href: "/ACT",
       },
       {
         label: "IELTS",
         subLabel:
           "Work on your IELTS score and improve all aspects of your english.",
-        href: "#",
+        href: "/IELTS",
       },
     ],
   },
@@ -324,18 +324,18 @@ const NAV_ITEMS = [
       {
         label: "Resources",
         subLabel: "Resources to guide you at every step of your application.",
-        href: "#",
+        href: "/resources",
       },
       {
         label: "Community",
         subLabel: "Talk to the community. You're not alone.",
-        href: "#",
+        href: "/community",
       },
     ],
   },
   {
     label: "Application Builder",
-    href: "#",
+    href: "/application",
   },
   {
     label: "My Essays",
