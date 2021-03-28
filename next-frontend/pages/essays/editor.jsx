@@ -7,14 +7,24 @@ import {
   Spacer,
 } from "@chakra-ui/layout";
 import { signIn, useSession } from "next-auth/client";
-import LoadingPage from "../components/Unprotected/LoadingPage";
-import Navbar from "../components/Protected/Navbar";
+import LoadingPage from "../../components/Unprotected/LoadingPage";
+import Navbar from "../../components/Protected/Navbar";
 import { Textarea } from "@chakra-ui/textarea";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { HiInformationCircle } from "react-icons/hi";
 import { IconButton } from "@chakra-ui/button";
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+} from "@chakra-ui/popover";
+import MarkdownHelp from "../../components/Protected/MarkdownHelp";
 
 export default function editor() {
   const [session, loading] = useSession();
@@ -35,7 +45,19 @@ export default function editor() {
             <Flex mb={4} alignItems={"center"}>
               <Heading>Editor</Heading>
               <Spacer />
-              <IconButton icon={<HiInformationCircle />} size="xs" />
+              <Popover>
+                <PopoverTrigger>
+                  <IconButton icon={<HiInformationCircle />} size="xs" />
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Markdown Help</PopoverHeader>
+                  <PopoverBody>
+                    <MarkdownHelp />
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
             </Flex>
             <Textarea
               onChange={handleMarkdownChange}
@@ -44,9 +66,10 @@ export default function editor() {
               height={"80vh"}
             />
           </Box>
-          <Box mx={1}>
+          <Box mx={2}>
             <Heading>Preview</Heading>
             <ReactMarkdown
+              mt={4}
               renderers={ChakraUIRenderer()}
               source={markdown}
               escapeHtml={false}

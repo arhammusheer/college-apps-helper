@@ -26,7 +26,7 @@ export default function Essays() {
           </Box>
           <Spacer />
           <Box>
-            <Link href="/editor">
+            <Link href="/essays/editor">
               <Button>New</Button>
             </Link>
           </Box>
