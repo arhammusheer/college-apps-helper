@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.1.5",
     "chakra-ui-markdown-renderer": "^1.1.0",
     "framer-motion": "^3.10.3",
-    "markdown-it": "^12.0.4",
+    "markdown-it": "^12.3.2",
     "mongodb": "^3.6.4",
     "next": "10.0.7",
     "next-auth": "^3.5.0",
